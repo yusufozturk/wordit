@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <style>
+    svg {
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const width = 800;
+    const height = 600;
+
+    const hexRadius = 20;
+    const horizontalSpacing = 1.5 * hexRadius;
+    const verticalSpacing = Math.sqrt(3) * hexRadius;
+
+    const svg = d3.select("body")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    // Calculate hexagon positions
+    const hexPositions = [];
+    for (let col = 0; col < 12; col++) {
+      for (let row = 0; row < 15; row++) {
+        const x = col * horizontalSpacing * 0.75;  // 0.75 accounts for the horizontal overlap
+        const y = row * verticalSpacing + (col % 2 === 1 ? verticalSpacing / 2 : 0);
+        hexPositions.push({ x, y });
+      }
+    }
+
+    // Append hexagons
+    svg.selectAll("polygon")
+      .data(hexPositions)
+      .enter()
+      .append("polygon")
+      .attr("points", d => {
+        const points = [];
+        for (let i = 0; i < 6; i++) {
+          const angle = Math.PI / 3 * i;
+          const pointX = d.x + hexRadius * Math.cos(angle);
+          const pointY = d.y + hexRadius * Math.sin(angle);
+          points.push([pointX, pointY]);
+        }
+        return points.join(" ");
+      })
+      .attr("fill", "none")
+      .attr("stroke", "black");
+
+    // Append text to cells
+    svg.selectAll("text")
+      .data(hexPositions)
+      .enter()
+      .append("text")
+      .attr("x", d => d.x)
+      .attr("y", d => d.y)
+      .attr("text-anchor", "middle")
+      .attr("dy", "0.35em")
+      .text((d, i) => i + 1);
+  </script>
+</body>
+</html>

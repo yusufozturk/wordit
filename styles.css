@@ -1,0 +1,72 @@
+/* ... (other styles) ... */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #f0f0f0;
+  }
+  
+  .player-info {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Background color with transparency */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  #welcome-message {
+    margin-bottom: 20px;
+  }
+  
+  #room-inputs {
+    margin-top: 20px;
+  }
+  /* ... (other styles) ... */
+  /* ... (other styles) ... */
+.sound-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Change to your preferred color */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Make it round */
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  #chart{
+    text-align: center;
+  }
+
+  .hr-style {
+     border: 0;
+     height: 2px;
+     width: 80%;
+     color: #E8E8E8;
+     background-color: #E8E8E8;
+  }
